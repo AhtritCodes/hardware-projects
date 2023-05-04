@@ -10,8 +10,8 @@
 #define front_echo_pin 7
 #define right_trig_pin 3
 #define right_echo_pin 4
-#define enA 22
-#define enB 24
+#define enA 24
+#define enB 25
 
 /*
   VARIABLE DECLARATIONS
@@ -21,8 +21,8 @@ int LS, FS, RS;
 int LW, RW;
 int inp1 = 26;
 int inp2 = 28;
-int inp3 = 30;
-int inp4 = 32;
+int inp3 = 27;
+int inp4 = 29;
 
 // =============================================================
 // setup() function
@@ -41,6 +41,8 @@ void setup()
   pinMode(inp2, OUTPUT);
   pinMode(inp3, OUTPUT);
   pinMode(inp4, OUTPUT);
+
+  ugv_stop();
 }
 
 // =============================================================
@@ -267,6 +269,8 @@ void ugv_right()
 */
 void ugv_stop()
 {
-  analogWrite(enA, 0);
-  analogWrite(enB, 0);
+  digitalWrite(inp1, LOW);
+  digitalWrite(inp2, LOW);
+  digitalWrite(inp3, LOW);
+  digitalWrite(inp4, LOW);
 }
